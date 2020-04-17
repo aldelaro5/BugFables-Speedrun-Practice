@@ -3,7 +3,7 @@ using HarmonyLib;
 
 namespace SpeedrunPractice
 {
-  [BepInPlugin("com.aldelaro5.BugFables.plugins.SpeedrunPractice", "Speedrun Practice", "2.0.0")]
+  [BepInPlugin("com.aldelaro5.BugFables.plugins.SpeedrunPractice", "Speedrun Practice", "2.0.1")]
   [BepInProcess("Bug Fables.exe")]
   public class SpeedrunPracticePlugin : BaseUnityPlugin
   {

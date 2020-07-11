@@ -72,6 +72,11 @@ namespace SpeedrunPractice.Extensions
 				SetFlagsRef.Invoke(battleControl, null);
 				RetryRef.Invoke(battleControl, new object[] { false });
 			}
+			if (Input.GetKey(KeyCode.Delete))
+			{
+				var exprewardRef = AccessTools.FieldRefAccess<BattleControl, int>("expreward");
+				exprewardRef(MainManager.battle) += 100;
+			}
 		}
 	}
 }

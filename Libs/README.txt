@@ -5,6 +5,7 @@ After installing BepInEx, place the following dlls in this directory to build th
 [Bug Fables]\Bug Fables_Data\Managed\UnityEngine* (every dll starting with UnityEngine)
 [Bug Fables]\BepInEx\core\BepInEx
 [Bug Fables]\BepInEx\core\BepInEx.Harmony
+[Bug Fables]\BepInEx\core\BepInEx.OHarmony
 
 Where [Bug Fables] is the directory where the game is installed.
 If you are using Steam, it is by default located at 

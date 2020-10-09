@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using SpeedrunPractice.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
@@ -36,8 +37,8 @@ namespace SpeedrunPractice.Patches
   public class PatchPlayerControlGetInput
   {
     // This patches an if condition that determines if the player is allowed to jump.
-    // Instead of being dependant on onground, it adds an OR condition with our custom
-    // toggleInfJump field to allow jumping if it's true regardless of onground
+    // Instead of being dependant on onground and coyote time, it will first
+    // check a custom field and it will take priority over the in game checks
     static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
     {
       bool patternFound = false;
@@ -50,8 +51,8 @@ namespace SpeedrunPractice.Patches
         {
           if (inst.operand == typeof(EntityControl).GetField("onground"))
           {
-            // Here, we have found the spot to patch, it's one instruction below the ldfld
-            indexToInsertPatch = i + 1;
+            // Here, we have found the spot to patch, it's 2 instruction before the ldfld of onground
+            indexToInsertPatch = i - 2;
             break;
           }
         }
@@ -64,17 +65,27 @@ namespace SpeedrunPractice.Patches
         }
       }
 
-      // The IL looks like this normally:
-      // IL_0379: ldfld     bool EntityControl::onground
-      // IL_037E: brfalse IL_04C7 (this means to not enter the if block)
-      // IL_0383: ldc.i4.4
-      // What we do is add a jump to IL_0383 if onground is true, but if it's not, this is 
-      // where we load our custom field and the instruction at IL_037E will now be dependant
-      // on our custom field.
+      // What we do is add a jump before onground is checked that will skip its check 
+      // (as well as the coyote time checks) so if our custom field is true, 
+      // the jump will go through
+      Console.WriteLine(instructionsList[indexToInsertPatch].opcode);
       var lbl = generator.DefineLabel();
-      instructionsList.Insert(indexToInsertPatch, new CodeInstruction(OpCodes.Brtrue, lbl));
-      instructionsList.Insert(indexToInsertPatch + 1, new CodeInstruction(OpCodes.Ldsfld, typeof(MainManager_Ext).GetField("toggleInfJump")));
-      instructionsList[indexToInsertPatch + 3].labels.Add(lbl);
+      instructionsList.Insert(indexToInsertPatch, new CodeInstruction(OpCodes.Ldsfld, typeof(MainManager_Ext).GetField("toggleInfJump")));
+      instructionsList.Insert(indexToInsertPatch + 1, new CodeInstruction(OpCodes.Brtrue, lbl));
+      Console.WriteLine(instructionsList[indexToInsertPatch].opcode);
+      Console.WriteLine(instructionsList[indexToInsertPatch + 1].opcode);
+      Console.WriteLine(instructionsList[indexToInsertPatch + 2].opcode);
+
+      for (int i = indexToInsertPatch; i < instructionsList.Count; i++)
+      {
+        var inst = instructionsList[i];
+        if (inst.operand == typeof(MainManager).GetField("jumpcooldown"))
+        {
+          instructionsList[i + 3].labels.Add(lbl);
+          Console.WriteLine(instructionsList[i + 3].opcode);
+          break;
+        }
+      }
 
       return instructionsList;
     }

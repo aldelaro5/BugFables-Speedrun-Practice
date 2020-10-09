@@ -5,6 +5,8 @@ A BepInEx plugin assisting speedrunners of the game Bug Fables. This plugin is a
 2. Since the patches are done at runtime instead of being a static patch, it allows more liberty in configuration in conjunction with BepInEx's standardized configuration scheme
 3. Due to #1, the code can be distributed publically under a Git repository which allows better tracking of changes through time
 
+> _This branch is only compatible with version 1.1 of the game. Please use the 1.0.5 branch if you must use this plugin with previous versions of the game._
+
 ## Installation instructions
 > _If you already have a 1.x version of the old practice dll (one that came with an Assembly-CSharp.dll), you must uninstall it first._
 

@@ -50,6 +50,7 @@ In battle:
 * F3 - Instant Enemy Kill
 * F4 - Instant Flee (w/o losing berries)
 * F5 - Instant Retry during battle
+* DEL - Adds 100 Exploration Points
 
 Note: If you close or re-enter the main menu, you will lose your saved positions.
 
@@ -74,7 +75,7 @@ All contributions via pull requests are welcome as well as issue reports on this
 If you are planning to submit a pull request, do not share any substantial amount of code from the game as it can lead to copyright issues and thanks to Harmony + BepInEx, it can be avoided in almost all cases. Any pull requests that contains substantial amount of code from the game will be immediately denied if I judge it can be done without sharing the code.
 
 ## Credits
-This plugin was done by Benjee, wataniyob, Wintar, Lyght and I with the help of ArchaicEx.
+This plugin was done by Benjee, wataniyob, Wintar, Lyght, Cyan627 and I with the help of ArchaicEx.
 
 ## License
 This plugin is licensed under the MIT license which grants you the permission to freely use, modify and distribute this plugin as long as the original license and its copyright notice is still present. Refer to [the MIT license](https://github.com/aldelaro5/BugFables-Speedrun-Practice/blob/master/LICENSE) for more information.

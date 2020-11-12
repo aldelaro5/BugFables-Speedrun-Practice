@@ -18,9 +18,9 @@ namespace SpeedrunPractice.Extensions
 			texture2D.Apply();
 			guistyle.normal.background = texture2D;
 			var pluginMetadata = MetadataHelper.GetMetadata(typeof(SpeedrunPracticePlugin));
-			GUI.Box(new Rect(0f, (float)Screen.height - 98f, 320f, 54f), 
+			GUI.Box(new Rect(0f, (float)Screen.height - 98f, 400f, 54f), 
 				"Practice DLL v" + pluginMetadata.Version + 
-				"\nby Benjee, wataniyob, Wintar, Lyght and aldelaro5", guistyle);
+				"\nby Benjee, wataniyob, Wintar, Lyght, Cyan627 and aldelaro5", guistyle);
 		}
 	}
 }

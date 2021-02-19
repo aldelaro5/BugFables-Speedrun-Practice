@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace SpeedrunPractice.Patches
 {
-  [HarmonyPatch(typeof(StartMenu), "Start")]
-  public class PatchStartMenuStart
-  {
-    static bool Prefix(PlayerControl __instance)
+    [HarmonyPatch(typeof(StartMenu), "Start")]
+    public class PatchStartMenuStart
     {
-      MainManager_Ext.pp_TeleportArray = new Vector3[5];
-      __instance.gameObject.AddComponent<StartMenu_Ext>();
+        static bool Prefix(PlayerControl __instance)
+        {
+            MainManager_Ext.pp_TeleportArray = new Vector3[5];
+            __instance.gameObject.AddComponent<StartMenu_Ext>();
 
-      return true;
+            return true;
+        }
     }
-  }
 }

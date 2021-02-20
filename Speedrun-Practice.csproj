@@ -368,6 +368,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\BattleControl_Ext.cs" />
+    <Compile Include="Extensions\FreeCam.cs" />
     <Compile Include="Extensions\MainManager_Ext.cs" />
     <Compile Include="Extensions\PlayerControl_Ext.cs" />
     <Compile Include="Extensions\StartMenu_Ext.cs" />

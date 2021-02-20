@@ -12,40 +12,18 @@ namespace SpeedrunPractice.Patches
             return true;
         }
 
-        static void Postfix(MainManager __instance) => MainManager.MainCamera.gameObject.AddComponent<FreeCam>();
-    }
-
-    [HarmonyPatch(typeof(MainManager), "Reset")]
-    public class PatchMainManagerReset
-    {
-        static bool Prefix()
-        {
-            MainManager_Ext.drawInfo = false;
-            MainManager_Ext.pp_TeleportIndex = 0;
-            MainManager_Ext.showInputDisplay = false;
-            MainManager_Ext.showPracticeMenu = false;
-            MainManager_Ext.toggleCollision = false;
-            MainManager_Ext.toggleInfJump = false;
-            PlayerControl_Ext.speed = 5;
-            return true;
-        }
+        static void Postfix() => MainManager.MainCamera.gameObject.AddComponent<FreeCam>();
     }
 
     [HarmonyPatch(typeof(MainManager), "RefreshCamera")]
     public class PatchMainManagerRefreshCamera
     {
-        static bool Prefix()
-        {
-            return !MainManager_Ext.toggleFreeCam;
-        }
+        static bool Prefix() => !MainManager_Ext.toggleFreeCam;
     }
-  }
-
 
     [HarmonyPatch(typeof(MainManager), "Reset")]
     public class PatchMainManagerReset
     {
         static void Prefix() => MainManager_Ext.ResetState();
-
     }
 }

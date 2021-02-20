@@ -11,7 +11,8 @@ namespace SpeedrunPractice.Extensions
         public static bool showInputDisplay = false;
         public static bool showPracticeMenu = false;
         public static bool toggleCollision = false;
-
+        public static bool toggleFreeCam = false;
+        
         public static void ResetState()
         {
             drawInfo = false;
@@ -21,6 +22,7 @@ namespace SpeedrunPractice.Extensions
             showInputDisplay = false;
             showPracticeMenu = false;
             toggleCollision = false;
+            toggleFreeCam = false;
             PlayerControl_Ext.speed = 5;
         }
     }

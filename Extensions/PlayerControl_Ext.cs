@@ -110,6 +110,13 @@ namespace SpeedrunPractice.Extensions
 				this.guiInfoMessage = "Collision : " + (MainManager_Ext.toggleCollision ? "Off" : "On");
 				this.guiInfoCount = 1;
 			}
+			if (Input.GetKeyDown(KeyCode.LeftControl))
+			{
+				MainManager_Ext.toggleFreeCam = !MainManager_Ext.toggleFreeCam;
+				MainManager.PlaySound("Scroll", -1);
+				this.guiInfoMessage = "Free Cam : " + (MainManager_Ext.toggleFreeCam ? "On" : "Off");
+				this.guiInfoCount = 1;
+			}
 			// This is dead code from leftovers on working on a practice menu
 			if (this.meowBenjee)
 			{

@@ -11,5 +11,6 @@ namespace SpeedrunPractice.Extensions
 		public static bool showInputDisplay = false;
 		public static bool showPracticeMenu = false;
 		public static bool toggleCollision = false;
+		public static bool toggleFreeCam = false;
 	}
 }

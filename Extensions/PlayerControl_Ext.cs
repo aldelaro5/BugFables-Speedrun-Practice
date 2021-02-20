@@ -161,57 +161,6 @@ namespace SpeedrunPractice.Extensions
 			}
 		}
 
-            if (Input.GetKeyDown(KeyCode.LeftControl))
-            {
-                MainManager_Ext.toggleFreeCam = !MainManager_Ext.toggleFreeCam;
-                MainManager.PlaySound("Scroll", -1);
-                this.guiInfoMessage = "Free Cam : " + (MainManager_Ext.toggleFreeCam ? "On" : "Off");
-                this.guiInfoCount = 1;
-            }
-            // This is dead code from leftovers on working on a practice menu
-            if (this.meowBenjee)
-            {
-                if (Input.GetKeyDown(KeyCode.Home))
-                {
-                    MainManager_Ext.showPracticeMenu = !MainManager_Ext.showPracticeMenu;
-                    MainManager.PlaySound("Jump", -1);
-                    MainManager.instance.pause = !MainManager.instance.pause;
-                }
-                if (MainManager.GetKey(1, false) && MainManager_Ext.showPracticeMenu)
-                {
-                    if (this.pdllMenuCursorPos == 4)
-                    {
-                        this.pdllMenuCursorPos = 0;
-                    }
-                    else
-                    {
-                        this.pdllMenuCursorPos++;
-                    }
-                    MainManager.PlaySound("Scroll", -1);
-                }
-                if (MainManager.GetKey(0, false) && MainManager_Ext.showPracticeMenu)
-                {
-                    if (this.pdllMenuCursorPos == 0)
-                    {
-                        this.pdllMenuCursorPos = 4;
-                    }
-                    else
-                    {
-                        this.pdllMenuCursorPos--;
-                    }
-                    MainManager.PlaySound("Scroll", -1);
-                }
-                if (MainManager.GetKey(4, false) && MainManager_Ext.showPracticeMenu)
-                {
-                    MainManager.PlaySound("Confirm", -1);
-                }
-                if (MainManager.GetKey(5, false) && MainManager_Ext.showPracticeMenu)
-                {
-                    MainManager.PlaySound("Cancel", -1);
-                }
-            }
-        }
-
         public void GUI_DrawInfoBox(PlayerControl __instance, GUIStyle guiStyle)
         {
             if (this.guiInfoCount <= 0)

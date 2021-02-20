@@ -14,99 +14,144 @@ namespace SpeedrunPractice.Extensions
         public bool meowBenjee = false;
         public static int speed = 5;
 
-        public void PracticeFKeys(PlayerControl __instance)
-        {
-            if (Input.GetKeyDown(KeyCode.F1))
-            {
-                MainManager_Ext.drawInfo = !MainManager_Ext.drawInfo;
-            }
-            if (Input.GetKeyDown(KeyCode.F2))
-            {
-                MainManager_Ext.showInputDisplay = !MainManager_Ext.showInputDisplay;
-            }
-            if (Input.GetKeyDown(KeyCode.F3))
-            {
-                MainManager.Heal();
-            }
-            if (Input.GetKeyDown(KeyCode.F4))
-            {
-                MainManager_Ext.toggleInfJump = !MainManager_Ext.toggleInfJump;
-                MainManager.PlaySound("Scroll", -1);
-                this.guiInfoMessage = "Inf. Jump : " + (MainManager_Ext.toggleInfJump ? "On" : "Off");
-                this.guiInfoCount = 1;
-            }
-            if (Input.GetKeyDown(KeyCode.F5))
-            {
-                __instance.basespeed = ((__instance.basespeed == 5) ? 10 : 5);
-                speed = __instance.basespeed;
-                this.guiInfoMessage = "Speed : " + __instance.basespeed;
-                this.guiInfoCount = 1;
-            }
-            if (Input.GetKeyDown(KeyCode.F6) && !MainManager.instance.pause)
-            {
-                MainManager.Save(new Vector3?(MainManager.player.transform.position));
-                MainManager.PlaySound("Save", -1);
-                this.guiInfoMessage = "Game saved .";
-                this.guiInfoCount = 1;
-            }
-            if (Input.GetKeyDown(KeyCode.F7) && !MainManager.instance.pause)
-            {
-                MainManager.ReloadSave();
-            }
-            if (Input.GetKeyDown(KeyCode.F8))
-            {
-                MainManager.Reset();
-            }
-            if (Input.GetKeyDown(KeyCode.F9))
-            {
-                if (MainManager_Ext.pp_TeleportIndex == 0)
-                {
-                    MainManager_Ext.pp_TeleportIndex = 4;
-                }
-                else
-                {
-                    MainManager_Ext.pp_TeleportIndex--;
-                }
-                this.guiInfoMessage = "Pos " + (MainManager_Ext.pp_TeleportIndex + 1) + " selected .";
-                this.guiInfoCount = 1;
-            }
-            if (Input.GetKeyDown(KeyCode.F10))
-            {
-                if (MainManager_Ext.pp_TeleportIndex == 4)
-                {
-                    MainManager_Ext.pp_TeleportIndex = 0;
-                }
-                else
-                {
-                    MainManager_Ext.pp_TeleportIndex++;
-                }
-                this.guiInfoMessage = "Pos " + (MainManager_Ext.pp_TeleportIndex + 1) + " selected .";
-                this.guiInfoCount = 1;
-            }
-            if (Input.GetKeyDown(KeyCode.F11))
-            {
-                MainManager_Ext.pp_TeleportArray[MainManager_Ext.pp_TeleportIndex] = MainManager.player.transform.position;
-                MainManager.PlaySound("Confirm", -1);
-                this.guiInfoMessage = "Pos " + (MainManager_Ext.pp_TeleportIndex + 1) + " saved .";
-                this.guiInfoCount = 1;
-            }
-            if (Input.GetKeyDown(KeyCode.F12))
-            {
-                MainManager.player.transform.position = MainManager_Ext.pp_TeleportArray[MainManager_Ext.pp_TeleportIndex];
-                MainManager.PlaySound("Confirm", -1);
-                this.guiInfoMessage = "Pos " + (MainManager_Ext.pp_TeleportIndex + 1) + " loaded .";
-                this.guiInfoCount = 1;
-            }
-            if (Input.GetKeyDown(KeyCode.Delete))
-            {
-                MainManager_Ext.toggleCollision = !MainManager_Ext.toggleCollision;
-                __instance.entity.detect.enabled = !MainManager_Ext.toggleCollision;
-                __instance.entity.ccol.enabled = !MainManager_Ext.toggleCollision;
-                MainManager_Ext.toggleInfJump = MainManager_Ext.toggleCollision;
-                MainManager.PlaySound("Scroll", -1);
-                this.guiInfoMessage = "Collision : " + (MainManager_Ext.toggleCollision ? "Off" : "On");
-                this.guiInfoCount = 1;
-            }
+		public void PracticeFKeys(PlayerControl __instance)
+		{
+			if (Input.GetKeyDown(KeyCode.F1))
+			{
+				MainManager_Ext.drawInfo = !MainManager_Ext.drawInfo;
+			}
+			if (Input.GetKeyDown(KeyCode.F2))
+			{
+				MainManager_Ext.showInputDisplay = !MainManager_Ext.showInputDisplay;
+			}
+			if (Input.GetKeyDown(KeyCode.F3))
+			{
+				MainManager.Heal();
+			}
+			if (Input.GetKeyDown(KeyCode.F4))
+			{
+				MainManager_Ext.toggleInfJump = !MainManager_Ext.toggleInfJump;
+				MainManager.PlaySound("Scroll", -1);
+				this.guiInfoMessage = "Inf. Jump : " + (MainManager_Ext.toggleInfJump ? "On" : "Off");
+				this.guiInfoCount = 1;
+			}
+			if (Input.GetKeyDown(KeyCode.F5))
+			{
+				__instance.basespeed = ((__instance.basespeed == 5) ? 10 : 5);
+				this.guiInfoMessage = "Speed : " + __instance.basespeed;
+				this.guiInfoCount = 1;
+			}
+			if (Input.GetKeyDown(KeyCode.F6) && !MainManager.instance.pause)
+			{
+				MainManager.Save(new Vector3?(MainManager.player.transform.position));
+				MainManager.PlaySound("Save", -1);
+				this.guiInfoMessage = "Game saved .";
+				this.guiInfoCount = 1;
+			}
+			if (Input.GetKeyDown(KeyCode.F7) && !MainManager.instance.pause)
+			{
+				MainManager.ReloadSave();
+			}
+			if (Input.GetKeyDown(KeyCode.F8))
+			{
+				MainManager.Reset();
+			}
+			if (Input.GetKeyDown(KeyCode.F9))
+			{
+				if (MainManager_Ext.pp_TeleportIndex == 0)
+				{
+					MainManager_Ext.pp_TeleportIndex = 4;
+				}
+				else
+				{
+					MainManager_Ext.pp_TeleportIndex--;
+				}
+				this.guiInfoMessage = "Pos " + (MainManager_Ext.pp_TeleportIndex + 1) + " selected .";
+				this.guiInfoCount = 1;
+			}
+			if (Input.GetKeyDown(KeyCode.F10))
+			{
+				if (MainManager_Ext.pp_TeleportIndex == 4)
+				{
+					MainManager_Ext.pp_TeleportIndex = 0;
+				}
+				else
+				{
+					MainManager_Ext.pp_TeleportIndex++;
+				}
+				this.guiInfoMessage = "Pos " + (MainManager_Ext.pp_TeleportIndex + 1) + " selected .";
+				this.guiInfoCount = 1;
+			}
+			if (Input.GetKeyDown(KeyCode.F11))
+			{
+				MainManager_Ext.pp_TeleportArray[MainManager_Ext.pp_TeleportIndex] = MainManager.player.transform.position;
+				MainManager.PlaySound("Confirm", -1);
+				this.guiInfoMessage = "Pos " + (MainManager_Ext.pp_TeleportIndex + 1) + " saved .";
+				this.guiInfoCount = 1;
+			}
+			if (Input.GetKeyDown(KeyCode.F12))
+			{
+				MainManager.player.transform.position = MainManager_Ext.pp_TeleportArray[MainManager_Ext.pp_TeleportIndex];
+				MainManager.PlaySound("Confirm", -1);
+				this.guiInfoMessage = "Pos " + (MainManager_Ext.pp_TeleportIndex + 1) + " loaded .";
+				this.guiInfoCount = 1;
+			}
+			if (Input.GetKeyDown(KeyCode.Delete))
+			{
+				MainManager_Ext.toggleCollision = !MainManager_Ext.toggleCollision;
+				__instance.entity.detect.enabled = !MainManager_Ext.toggleCollision;
+				__instance.entity.ccol.enabled = !MainManager_Ext.toggleCollision;
+				__instance.entity.feet.enabled = !MainManager_Ext.toggleCollision;
+				MainManager_Ext.toggleInfJump = MainManager_Ext.toggleCollision;
+				if (MainManager_Ext.toggleCollision)
+					__instance.entity.hitwall = false;
+				MainManager.PlaySound("Scroll", -1);
+				this.guiInfoMessage = "Collision : " + (MainManager_Ext.toggleCollision ? "Off" : "On");
+				this.guiInfoCount = 1;
+			}
+			// This is dead code from leftovers on working on a practice menu
+			if (this.meowBenjee)
+			{
+				if (Input.GetKeyDown(KeyCode.Home))
+				{
+					MainManager_Ext.showPracticeMenu = !MainManager_Ext.showPracticeMenu;
+					MainManager.PlaySound("Jump", -1);
+					MainManager.instance.pause = !MainManager.instance.pause;
+				}
+				if (MainManager.GetKey(1, false) && MainManager_Ext.showPracticeMenu)
+				{
+					if (this.pdllMenuCursorPos == 4)
+					{
+						this.pdllMenuCursorPos = 0;
+					}
+					else
+					{
+						this.pdllMenuCursorPos++;
+					}
+					MainManager.PlaySound("Scroll", -1);
+				}
+				if (MainManager.GetKey(0, false) && MainManager_Ext.showPracticeMenu)
+				{
+					if (this.pdllMenuCursorPos == 0)
+					{
+						this.pdllMenuCursorPos = 4;
+					}
+					else
+					{
+						this.pdllMenuCursorPos--;
+					}
+					MainManager.PlaySound("Scroll", -1);
+				}
+				if (MainManager.GetKey(4, false) && MainManager_Ext.showPracticeMenu)
+				{
+					MainManager.PlaySound("Confirm", -1);
+				}
+				if (MainManager.GetKey(5, false) && MainManager_Ext.showPracticeMenu)
+				{
+					MainManager.PlaySound("Cancel", -1);
+				}
+			}
+		}
 
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {

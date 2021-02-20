@@ -371,6 +371,9 @@
     <Compile Include="Extensions\MainManager_Ext.cs" />
     <Compile Include="Extensions\PlayerControl_Ext.cs" />
     <Compile Include="Extensions\StartMenu_Ext.cs" />
+    <Compile Include="Patches\EntityControl.cs" />
+    <Compile Include="Patches\GroundDetector.cs" />
+    <Compile Include="Patches\RayDetector.cs" />
     <Compile Include="SpeedrunPracticePlugin.cs" />
     <Compile Include="Patches\BattleControl.cs" />
     <Compile Include="Patches\MainManager.cs" />

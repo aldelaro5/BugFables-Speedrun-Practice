@@ -12,7 +12,7 @@ namespace SpeedrunPractice.Extensions
     public int pdllMenuCursorPos = 0;
 		// This is a dead variable...with a cute name!
     public bool meowBenjee = false;
-
+		public static int speed = 5;
 		public void PracticeFKeys(PlayerControl __instance)
 		{
 			if (Input.GetKeyDown(KeyCode.F1))
@@ -53,8 +53,7 @@ namespace SpeedrunPractice.Extensions
 			}
 			if (Input.GetKeyDown(KeyCode.F8))
 			{
-				SceneManager.LoadScene(0);
-				//Application.LoadLevel(0);
+				MainManager.Reset();
 			}
 			if (Input.GetKeyDown(KeyCode.F9))
 			{

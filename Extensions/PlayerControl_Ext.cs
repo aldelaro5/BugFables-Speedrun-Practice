@@ -38,6 +38,7 @@ namespace SpeedrunPractice.Extensions
 			if (Input.GetKeyDown(KeyCode.F5))
 			{
 				__instance.basespeed = ((__instance.basespeed == 5) ? 10 : 5);
+				speed = __instance.basespeed;
 				this.guiInfoMessage = "Speed : " + __instance.basespeed;
 				this.guiInfoCount = 1;
 			}

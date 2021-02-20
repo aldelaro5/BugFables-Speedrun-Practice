@@ -12,7 +12,7 @@ namespace SpeedrunPractice.Extensions
     public int pdllMenuCursorPos = 0;
 		// This is a dead variable...with a cute name!
     public bool meowBenjee = false;
-
+		public static int speed = 5;
 		public void PracticeFKeys(PlayerControl __instance)
 		{
 			if (Input.GetKeyDown(KeyCode.F1))
@@ -37,6 +37,7 @@ namespace SpeedrunPractice.Extensions
 			if (Input.GetKeyDown(KeyCode.F5))
 			{
 				__instance.basespeed = ((__instance.basespeed == 5) ? 10 : 5);
+				speed = __instance.basespeed;
 				this.guiInfoMessage = "Speed : " + __instance.basespeed;
 				this.guiInfoCount = 1;
 			}

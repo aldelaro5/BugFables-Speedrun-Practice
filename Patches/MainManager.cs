@@ -39,4 +39,13 @@ namespace SpeedrunPractice.Patches
             return !MainManager_Ext.toggleFreeCam;
         }
     }
+  }
+
+
+    [HarmonyPatch(typeof(MainManager), "Reset")]
+    public class PatchMainManagerReset
+    {
+        static void Prefix() => MainManager_Ext.ResetState();
+
+    }
 }

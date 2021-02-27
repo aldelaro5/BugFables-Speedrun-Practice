@@ -101,7 +101,10 @@ namespace SpeedrunPractice.Extensions
 				MainManager_Ext.toggleCollision = !MainManager_Ext.toggleCollision;
 				__instance.entity.detect.enabled = !MainManager_Ext.toggleCollision;
 				__instance.entity.ccol.enabled = !MainManager_Ext.toggleCollision;
+				__instance.entity.feet.enabled = !MainManager_Ext.toggleCollision;
 				MainManager_Ext.toggleInfJump = MainManager_Ext.toggleCollision;
+				if (MainManager_Ext.toggleCollision)
+				  __instance.entity.hitwall = false;
 				MainManager.PlaySound("Scroll", -1);
 				this.guiInfoMessage = "Collision : " + (MainManager_Ext.toggleCollision ? "Off" : "On");
 				this.guiInfoCount = 1;

@@ -53,8 +53,7 @@ namespace SpeedrunPractice.Extensions
 			}
 			if (Input.GetKeyDown(KeyCode.F8))
 			{
-				SceneManager.LoadScene(0);
-				//Application.LoadLevel(0);
+				MainManager.Reset();
 			}
 			if (Input.GetKeyDown(KeyCode.F9))
 			{

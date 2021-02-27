@@ -14,11 +14,9 @@ namespace SpeedrunPractice.Patches
     }
   }
 
-
-    [HarmonyPatch(typeof(MainManager), "Reset")]
-    public class PatchMainManagerReset
-    {
-        static void Prefix() => MainManager_Ext.ResetState();
-
-    }
+  [HarmonyPatch(typeof(MainManager), "Reset")]
+  public class PatchMainManagerReset
+  {
+    static void Prefix() => MainManager_Ext.ResetState();
+  }
 }

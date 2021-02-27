@@ -5,17 +5,28 @@ namespace SpeedrunPractice.Extensions
 {
   public class BattleControl_Ext : MonoBehaviour
   {
+    void KillEnemy(ref MainManager.BattleData enemy, BattleControl battleControl)
+    {
+	  enemy.hp = 0;
+	  enemy.battleentity.dead = false;
+	  StartCoroutine(battleControl.CheckDead());
+	}
 		public void PracticeFKeys()
 		{
 			var battleControl = this.gameObject.GetComponent<BattleControl>();
 			if (Input.GetKey(KeyCode.F3))
 			{
-				for (int i = 0; i < battleControl.enemydata.Length; i++)
-				{
-					battleControl.enemydata[i].hp = 0;
-					battleControl.enemydata[i].battleentity.dead = false;
-					battleControl.StartCoroutine(battleControl.CheckDead());
-				}
+			  var enemyInFieldRef = AccessTools.Method(typeof(BattleControl), "EnemyInField", new System.Type[] { typeof(int)});
+			  int indexWeb = (int)enemyInFieldRef.Invoke(battleControl, new object[] { (int)MainManager.Enemies.MothWeb });
+			  if (indexWeb != -1)
+			  {
+			    KillEnemy(ref battleControl.enemydata[indexWeb], battleControl);
+			  } 
+			  else
+			  {
+			    for (int i = 0; i < battleControl.enemydata.Length; i++)
+				  KillEnemy(ref battleControl.enemydata[i], battleControl);
+			  }
 			}
 			if (battleControl.canflee && Input.GetKey(KeyCode.F4))
 			{

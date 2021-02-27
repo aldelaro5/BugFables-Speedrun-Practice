@@ -13,7 +13,7 @@ namespace SpeedrunPractice.Patches
     static bool Prefix(PlayerControl __instance)
     {
       __instance.gameObject.AddComponent<PlayerControl_Ext>();
-            __instance.basespeed = PlayerControl_Ext.speed;
+      __instance.basespeed = PlayerControl_Ext.speed;
       return true;
     }
   }
